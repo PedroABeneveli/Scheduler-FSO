@@ -10,6 +10,45 @@ node_t* create_node(process_t *p) {
     return no;
 }
 
+// returns true if the node was removed successfully, and false otherwise
+int erase_node(linked_list_t* list, int idx) {
+    if (idx >= list->sz || idx < 0)
+        return false;
+
+    if (idx == 0) {
+        if (list->sz == 1) {
+            list->head = NULL;
+            list->last = NULL;
+        } else {
+            node_t *no = list->head;
+            list->head = no->next;
+            free(no->data);
+            free(no);
+        }
+    } else {
+        int curr = 0, next = 1;
+        node_t *curr_no = list->head;
+        while (next != idx) {
+            curr_no = curr_no->next;
+            curr++;
+            next++;
+        }
+
+        node_t *next_no = curr_no->next;
+
+        curr_no->next = next_no->next;
+        free(next_no->data);
+        free(next_no);
+
+        if (idx == list->sz - 1) {
+            list->last = curr_no;
+        }
+    }
+
+    list->sz--;
+    return true;
+}
+
 linked_list_t* create_linked_list() {
     linked_list_t *list = malloc(sizeof(linked_list_t));
 
