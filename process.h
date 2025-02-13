@@ -1,8 +1,7 @@
 #ifndef PROCESS
 #define PROCESS
 
-#define true 1
-#define false 0
+#include "defines.h"
 
 int curr_pid, process_count;
 

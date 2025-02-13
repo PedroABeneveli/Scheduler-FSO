@@ -1,7 +1,5 @@
 #include "linkedList.h"
-#include "process.h"
-
-#define NULL 0  
+#include "process.h" 
 
 node_t* create_node(process_t *p) {
     node_t *no = malloc(sizeof(node_t));
