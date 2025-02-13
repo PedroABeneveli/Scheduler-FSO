@@ -16,7 +16,7 @@ typedef struct linked_list {
 // acho que nao vou precisar apagar processos, posso so ignorar os que acabarem
 node_t* create_node(process_t* p);
 linked_list_t* create_linked_list();
-void erase_linked_list(linked_list* list);
-void add_process_to_list(linked_list* list, process_t* p);
+void erase_linked_list(linked_list_t* list);
+void add_process_to_list(linked_list_t* list, process_t* p);
 
 #endif
