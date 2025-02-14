@@ -6,10 +6,10 @@
 #include "defines.h"
 
 int quantum, curr_process_index;
-process_t *curr_process;
+node_t *curr_process;
 linked_list_t *process_list;
 
 void init_scheduler(int quan);
-process_t* get_next_process(int type);
+node_t* get_next_process_node(linked_list_t *list, int type);
 
 #endif

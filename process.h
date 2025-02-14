@@ -23,6 +23,6 @@ typedef struct process {
 
 void process_init();
 process_t* create_process(int duration, int arrival);
-int process_comp(process_t p1, process_t p2, int type);
+int process_comp(process_t *p1, process_t *p2, int type);
 
 #endif

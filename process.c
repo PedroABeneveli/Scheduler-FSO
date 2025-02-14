@@ -37,13 +37,13 @@ process_t* create_process(int duration, int arrival) {
 // type == 1 => SJF
 // RR doesn't compare processes, it just goes to the next element in the list
 // returns true if p1 is going to be executed before p2
-int process_comp(process_t p1, process_t p2, int type) {
+int process_comp(process_t *p1, process_t *p2, int type) {
     if (type == 0) {
-        if (p1.arrival < p2.arrival)
+        if (p1->arrival < p2->arrival)
             return true;
         return false;
     } else if (type == 1) {
-        if (p1.duration < p2.duration)
+        if (p1->duration < p2->duration)
             return true;
         return false;
     }
