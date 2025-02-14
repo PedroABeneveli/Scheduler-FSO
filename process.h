@@ -1,6 +1,8 @@
 #ifndef PROCESS
 #define PROCESS
 
+#include <stdlib.h>
+
 #define true 1
 #define false 0
 

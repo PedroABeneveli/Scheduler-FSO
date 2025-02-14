@@ -1,12 +1,16 @@
 #ifndef LINKEDLIST
 #define LINKEDLIST
 
+#include <stdlib.h>
+
 #include "process.h"
 
-typedef struct node {
+typedef struct node node_t;
+
+struct node {
     process_t *data;
     node_t *next;
-} node_t;
+};
 
 typedef struct linked_list {
     int sz;
