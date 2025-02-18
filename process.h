@@ -3,7 +3,7 @@
 
 #include "defines.h"
 
-int curr_pid, process_count;
+extern int curr_pid, process_count;
 
 typedef enum process_state {READY, RUNNING, BLOCKED} process_state_t;
 

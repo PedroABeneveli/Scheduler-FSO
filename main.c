@@ -1,10 +1,12 @@
+#include <stdio.h>
+#include "global.h"
 #include "defines.h"
 #include "linkedList.h"
 #include "process.h"
 #include "scheduler.h"
 
 extern linked_list_t* process_list;
-int eax, ecx, edx, ebx, esp, ebp, esi, edi, eip;
+extern node_t* curr_process;
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -50,10 +52,13 @@ int main(int argc, char* argv[]) {
     for (int t = 0 ; process_list->sz > 0 ; t++) {
         scheduler(type);
 
+        if (process_list->sz == 0) break;
+
         printf("Tempo %d: esta rodando o processo de duracao inicial de %d tempo, e que chegou no instante %d\n", t, curr_process->data->duration, curr_process->data->arrival);
         curr_process->data->time_left--;
         curr_process->data->time_running++;
     }
 
+    erase_linked_list(process_list);
     printf("Fim da lista de processos\n");
 }

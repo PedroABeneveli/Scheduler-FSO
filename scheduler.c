@@ -28,6 +28,7 @@ node_t* get_next_process_node(linked_list_t *list, int type) {
                     curr_process_index = idx;
                 }
             }
+            curr = curr->next;
         }
 
         return no;
@@ -91,6 +92,7 @@ void scheduler(int type) {
                 
             } else {
                 prev_node->data->state = READY;
+                prev_node->data->time_running = 0;
 
                 // context switch, saving previous data in the previous process context
                 prev_node->data->context.eax = eax;
