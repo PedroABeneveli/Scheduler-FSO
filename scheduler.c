@@ -1,7 +1,5 @@
 #include "scheduler.h"
 
-extern int eax, ecx, edx, ebx, esp, ebp, esi, edi, eip;
-
 // initializes scheduler variables
 // call this function before inserting processes into the linked list
 void init_scheduler(int quan) {
