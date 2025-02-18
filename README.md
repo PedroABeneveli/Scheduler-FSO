@@ -14,7 +14,7 @@ Para testar o código sem utilizar uma VM, foi feito uma simulação, onde os pr
 Para compilar, basta executar a linha de comando abaixo no terminal no diretório root do projeto:
 
 ```
-gcc *.c -o scheduler
+make
 ```
 
 Isso irá gerar o arquivo executável _scheduler_, que executa a simulação.
