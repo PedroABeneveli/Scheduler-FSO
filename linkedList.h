@@ -1,8 +1,6 @@
 #ifndef LINKEDLIST
 #define LINKEDLIST
 
-#include <stdlib.h>
-
 #include "process.h"
 #include "defines.h"
 
