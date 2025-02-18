@@ -24,12 +24,13 @@ Isso irá gerar o arquivo executável _scheduler_, que executa a simulação.
 Com o arquivo executável, basta digitar no terminal:
 
 ```
-./scheduler tipo_de_escalonamento quantum
+./scheduler numero_de_processos tipo_de_escalonamento quantum
 ```
 
 Onde:
+- numero_de_processos: quantidade de processos que vão ser instanciados e colocados na fila circular.
 - tipo_de_escalonamento: é o argumento que indica qual o tipo de escalonamento desejado nessa execução, em que:
     - 0: _First In First Out_ (FIFO)
-    - 1: _Shortes Job First_ (SJF)
+    - 1: _Shortest Job First_ (SJF)
     - 2: _Round Robin_ (RR)
-- quantum: obrigatório para a execução do _Round Robin_, não utilizado nos outros tipos de escalonamento
+- quantum: obrigatório para a execução do _Round Robin_, não utilizado nos outros tipos de escalonamento.

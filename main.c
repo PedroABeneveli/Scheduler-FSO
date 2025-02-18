@@ -8,54 +8,48 @@
 extern linked_list_t* process_list;
 extern node_t* curr_process;
 
+int gen_random(int min, int max){
+    return min + rand() / (RAND_MAX / (max - min + 1) + 1);
+}
+
 int main(int argc, char* argv[]) {
-    if (argc > 3) {
+    if (argc > 4) {
         printf("Muitos argumentos fornecidos\n");
         return 0;
     }
 
-    if (argc < 2) {
-        printf("Eh necessario que seja fornecido o tipo de escalonamento\n");
+    if (argc < 3) {
+        printf("Eh necessario que seja fornecido o tipo de escalonamento e o numero de processos\n");
         return 0;
     }
 
-    int type = atoi(argv[1]);
+    int type = atoi(argv[2]), num_processes = atoi(argv[1]);
     if (type < 0 || type > 2) {
         printf("Tipo de escalonamento invalido. O tipo pode ser:\n  0: First In First Out (FIFO)\n  1: Shortest Job First (SJF)\n  2: Round Robin, em que tambem deve ser fornecido o quantum\n");
         return 0;
     }
+    if (num_processes <= 0) {
+        printf("Eh necessario que seja instanciado pelo menos 1 processo\n");
+        return 0;
+    }
 
-    if (type == 2 && argc < 3) {
+    if (type == 2 && argc < 4) {
         printf("Eh necessario que seja fornecido o quantum para o escalonamento Round Robin\n");
         return 0;
     }
 
-    int quan = type == 2 ? atoi(argv[2]) : 0;
+    int quan = type == 2 ? atoi(argv[3]) : 0;
 
     init_scheduler(quan);
 
     // instanciando os processos
     process_t* proc;
 
-    // Processo A
-    proc = create_process(10, 6);
-    add_process_to_list(process_list, proc);
-    printf("Processo A: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
-
-    // Processo B
-    proc = create_process(3, 8);
-    add_process_to_list(process_list, proc);
-    printf("Processo B: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
-
-    // Processo C
-    proc = create_process(6, 2);
-    add_process_to_list(process_list, proc);
-    printf("Processo C: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
-
-    // Processo D
-    proc = create_process(4, 3);
-    add_process_to_list(process_list, proc);
-    printf("Processo D: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
+    for (int i = 1 ; i <= num_processes ; i++) {
+        proc = create_process(gen_random(1, 15), gen_random(1, 20*num_processes));
+        add_process_to_list(process_list, proc);
+        printf("Processo %d: pid = %d, duracao = %d, chegada = %d\n", i, proc->pid, proc->duration, proc->arrival);
+    }
 
     printf("\n");
 
