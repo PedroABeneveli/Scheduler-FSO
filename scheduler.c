@@ -34,7 +34,16 @@ node_t* get_next_process_node(linked_list_t *list, int type) {
         } else {
             no = curr_process->next;
         }
+
+        return no;
     }
 
     return NULL;
+}
+
+// type == 0 => FIFO
+// type == 1 => SJF
+// type == 2 => RR
+void scheduler(int type) {
+    
 }
