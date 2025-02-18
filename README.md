@@ -8,3 +8,28 @@ O tema escolhido foi:
 A implementação do _Scheduler_ foi inspirada na implementação presente em https://github.com/OmarAzizi/SKernel, adicionando a funcionalidade do _Scheduler_ utilizar uma forma diferente de escalonamento baseado em um parâmetro passado na chamada do escalonador. 
 
 Para testar o código sem utilizar uma VM, foi feito uma simulação, onde os processos não são realmente executados e não possuem código, apenas os atributos necessários para serem escolhidos pelo _Scheduler_.
+
+## Compilação
+
+Para compilar, basta executar a linha de comando abaixo no terminal no diretório root do projeto:
+
+```
+gcc *.c -o scheduler
+```
+
+Isso irá gerar o arquivo executável _scheduler_, que executa a simulação.
+
+## Como utilizar
+
+Com o arquivo executável, basta digitar no terminal:
+
+```
+./scheduler tipo_de_escalonamento quantum
+```
+
+Onde:
+- tipo_de_escalonamento: é o argumento que indica qual o tipo de escalonamento desejado nessa execução, em que:
+    - 0: _First In First Out_ (FIFO)
+    - 1: _Shortes Job First_ (SJF)
+    - 2: _Round Robin_ (RR)
+- quantum: obrigatório para a execução do _Round Robin_, não utilizado nos outros tipos de escalonamento

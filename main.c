@@ -9,6 +9,11 @@ extern linked_list_t* process_list;
 extern node_t* curr_process;
 
 int main(int argc, char* argv[]) {
+    if (argc > 3) {
+        printf("Muitos argumentos fornecidos\n");
+        return 0;
+    }
+
     if (argc < 2) {
         printf("Eh necessario que seja fornecido o tipo de escalonamento\n");
         return 0;
@@ -35,18 +40,24 @@ int main(int argc, char* argv[]) {
     // Processo A
     proc = create_process(10, 6);
     add_process_to_list(process_list, proc);
+    printf("Processo A: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
 
     // Processo B
     proc = create_process(3, 8);
     add_process_to_list(process_list, proc);
+    printf("Processo B: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
 
     // Processo C
     proc = create_process(6, 2);
     add_process_to_list(process_list, proc);
+    printf("Processo C: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
 
     // Processo D
     proc = create_process(4, 3);
     add_process_to_list(process_list, proc);
+    printf("Processo D: pid = %d, duracao = %d, chegada = %d\n", proc->pid, proc->duration, proc->arrival);
+
+    printf("\n");
 
     // Simulando ate a lista ficar vazia
     for (int t = 0 ; process_list->sz > 0 ; t++) {
@@ -54,7 +65,7 @@ int main(int argc, char* argv[]) {
 
         if (process_list->sz == 0) break;
 
-        printf("Tempo %d: esta rodando o processo de duracao inicial de %d tempo, e que chegou no instante %d\n", t, curr_process->data->duration, curr_process->data->arrival);
+        printf("Tempo %d: esta rodando o processo de pid igual a %d\n", t, curr_process->data->pid);
         curr_process->data->time_left--;
         curr_process->data->time_running++;
     }
