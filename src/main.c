@@ -8,6 +8,7 @@
 extern linked_list_t* process_list;
 extern node_t* curr_process;
 
+// not really random, it repeats values on different executions
 int gen_random(int min, int max){
     return min + rand() / (RAND_MAX / (max - min + 1) + 1);
 }
