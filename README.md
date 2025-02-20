@@ -9,6 +9,10 @@ A implementação do _Scheduler_ foi inspirada na implementação presente em ht
 
 Para testar o código sem utilizar uma VM, foi feito uma simulação, onde os processos não são realmente executados e não possuem código, apenas os atributos necessários para serem escolhidos pelo _Scheduler_.
 
+## Alunos
+- Guilherme Fornari Leonel
+- Pedro Avila Beneveli
+
 ## Compilação
 
 Para compilar, basta executar a linha de comando abaixo no terminal no diretório root do projeto:
